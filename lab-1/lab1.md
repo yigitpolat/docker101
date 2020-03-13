@@ -24,17 +24,13 @@ We are going to use the Docker CLI to run our first container.
 
 1. Open a terminal on your local computer
 2. Run `docker container run -t ubuntu top`
-  
-    {% hint style="info" %}
+    
     Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly.
-    {% endhint %}
-
-
-
+    
     ```bash
     docker container run -it ubuntu top
     ```
-
+    
     ```bash
     Unable to find image 'ubuntu:latest' locally
     latest: Pulling from library/ubuntu
@@ -46,9 +42,9 @@ We are going to use the Docker CLI to run our first container.
     Digest: sha256:f3a61450ae43896c4332bda5e78b453f4a93179045f20c8181043b26b5e79028
     Status: Downloaded newer image for ubuntu:latest
     ```
-
+    
     The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
-
+    
     ```bash
     top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
     Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
@@ -59,11 +55,11 @@ We are going to use the Docker CLI to run our first container.
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND    
         1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
     ```
-
+    
     `top` is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the `top` process itself. We don't see other processes from our host in this list because of the PID namespace isolation.
-
+    
     Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run `top` while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran `top` on the host.
-
+    
     Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.
 
 3. Inspect the container with `docker container exec`
