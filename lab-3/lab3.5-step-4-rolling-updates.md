@@ -1,11 +1,9 @@
 # Step 4: Rolling Updates
 
-## 
-
 Now that we have our service deployed, let's demonstrate a release of our application. We are going to update the version of Nginx to version "1.13". To do this update we are going to use the `docker service update` command.
 
 ```bash
-$ docker service update --image nginx:1.13 --detach=true nginx1
+docker service update --image nginx:1.13 --detach=true nginx1
 ```
 
 This will trigger a rolling update of the swarm. Quickly type in `docker service ps nginx1` over and over to see the updates in real time.
@@ -15,7 +13,8 @@ You can fine tune the rolling update using these options: `--update-parallelism`
 After a few seconds, run `docker service ps nginx1` to see all the images have been updated to nginx:1.13.
 
 ```bash
-$ docker service ps nginx1
+docker service ps nginx1
+: '
 ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STAT
 E             ERROR               PORTS
 di2hmdpw0j0z        nginx1.1            nginx:1.13          node1               Running             Running 50 s
@@ -38,9 +37,7 @@ n15o01ouv2uf        nginx1.5            nginx:1.13          node3               
 econds ago
 xj271k2829uz         \_ nginx1.5        nginx:1.12          node1               Shutdown            Shutdown 40
 seconds ago
+'
 ```
 
 You have successfully updated your app to the latest version of nginx!
-
-## 
-
