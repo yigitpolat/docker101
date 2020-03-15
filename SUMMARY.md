@@ -5,7 +5,7 @@
 
 ## Lab 0 <a id="lab-0-1"></a>
 
-* [Install Docker](lab0.md)
+* [Install Docker](lab-0-1/lab0.md)
 
 ## Lab 1
 
