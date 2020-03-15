@@ -12,6 +12,7 @@
 * [Run your first container](lab-1/lab1.1-run-your-first-container.md)
 * [Run Multiple Containers](lab-1/lab1.2-run-multiple-containers.md)
 * [Clean Up](lab-1/lab1.3-clean-up.md)
+* [Summary](lab-1/lab1.4-summary.md)
 
 ## Lab 2
 

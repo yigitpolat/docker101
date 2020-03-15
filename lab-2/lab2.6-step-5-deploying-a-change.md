@@ -2,7 +2,7 @@
 
 The "hello world!" application is overrated, let's update the app so that it says "Hello Beautiful World!" instead.
 
-1. Update `app.py`
+# Update `app.py`
 
 Replace the string "Hello World" with "Hello Beautiful World!" in `app.py`. You can update the file with the following command. \(copy-paste the entire code block\)
 
@@ -19,14 +19,17 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0")' > app.py
 ```
 
-1. Rebuild and push your image
+# Rebuild and push your image
 
 Now that your app is updated, you need repeat the steps above to rebuild your app and push it to the Docker Hub registry.
 
 First rebuild, this time use your Docker Hub username in the build command.:
 
 ```bash
-$  docker image build -t [dockerhub username]/python-hello-world .
+docker image build -t $DOCKER_USERNAME/python-hello-world .
+```
+
+```bash
 Sending build context to Docker daemon  3.072kB
 Step 1/4 : FROM python:3.6.1-alpine
  ---> c86415c03c37
@@ -46,8 +49,11 @@ Successfully tagged jzaccone/python-hello-world:latest
 Notice the "Using cache" for steps 1-3. These layers of the Docker Image have already been built and `docker image build` will use these layers from the cache instead of rebuilding them.
 
 ```bash
-$ docker push [dockerhub username]/python-hello-world
-The push refers to a repository [docker.io/jzaccone/python-hello-world]
+docker push $DOCKER_USERNAME/python-hello-world
+```
+
+```bash
+The push refers to a repository [docker.io/<DOCKER_USERNAME>/python-hello-world]
 94525867566e: Pushed 
 64d445ecbe93: Layer already exists 
 18b27eac38a1: Layer already exists 

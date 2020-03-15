@@ -4,22 +4,22 @@ One of the major design properties of Docker is its use of the union file system
 
 Consider the Dockerfile that we created before:
 
-```bash
+```Dockerfile
 FROM python:3.6.1-alpine
 RUN pip install flask
 CMD ["python","app.py"]
 COPY app.py /app.py
 ```
 
-Each of these lines is a layer. Each layer contains only the delta, or changes from the layers before it. To put these layers together into a single running container, Docker makes use of the union file system to overlay layers transparently into a single view.
+Each of these lines is a **layer**. Each layer contains only the delta, or changes from the layers before it. To put these layers together into a single running container, Docker makes use of the union file system to overlay layers transparently into a single view.
 
-Each layer of the image is read-only, except for the very top layer which is created for the container. The read/write container layer implements "copy-on-write" which means that files that are stored in lower image layers are pulled up to the read/write container layer only when edits are being made to those files. Those changes are then stored in the container layer. The "copy-on-write" function is very fast, and in almost all cases, does not have a noticeable effect on performance. You can inspect which files have been pulled up to the container level with the `docker diff` command. More information about how to use `docker diff` can be found [here](https://docs.docker.com/engine/reference/commandline/diff/) .
+Each layer of the image is **read-only**, except for the very top layer which is created for the container. The read/write container layer implements "copy-on-write" which means that files that are stored in lower image layers are pulled up to the read/write container layer only when edits are being made to those files. Those changes are then stored in the container layer. The "copy-on-write" function is very fast, and in almost all cases, does not have a noticeable effect on performance. You can inspect which files have been pulled up to the container level with the `docker diff` command. More information about how to use `docker diff` can be found [here](https://docs.docker.com/engine/reference/commandline/diff/) .
 
 ![](https://github.com/volaka/intro-to-docker-lab/tree/6812e5acd913afcf01957885b524dd13ec13ff50/workshop/images/lab2_understanding_image_layers_1.png)
 
 Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.
 
-```bash
+```Dockerfile
 FROM python:3.6.1-alpine
 RUN pip install flask
 CMD ["python","app2.py"]
@@ -35,8 +35,11 @@ You may notice that there are duplicate lines in this Dockerfile and the Dockerf
 Image layering enables the docker caching mechanism for builds and pushes. For example, the output for your last `docker push` shows that some of the layers of your image already exists on the Docker Hub.
 
 ```bash
-$ docker push [dockerhub username]/python-hello-world
-The push refers to a repository [docker.io/jzaccone/python-hello-world]
+docker push $DOCKER_USERNAME/python-hello-world
+```
+
+```bash
+The push refers to a repository [docker.io/<DOCKER_USERNAME>/python-hello-world]
 94525867566e: Pushed 
 64d445ecbe93: Layer already exists 
 18b27eac38a1: Layer already exists 
@@ -50,7 +53,10 @@ latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc868857
 To look more closely at layers, you can use the `docker image history` command of the python image we created.
 
 ```bash
-$ docker image history python-hello-world
+docker image history python-hello-world
+```
+
+```bash
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 f1b2781b3111        5 minutes ago       /bin/sh -c #(nop) COPY file:0114358808a1bb...   159B                
 0ab91286958b        5 minutes ago       /bin/sh -c #(nop)  CMD ["python" "app.py"]      0B                  
