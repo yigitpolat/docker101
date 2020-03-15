@@ -29,4 +29,10 @@
 ## Lab 3
 
 * [Introduction to orchestration](lab-3/lab3.1-introduction-to-orchestration.md)
+* [Step 1: Create your first swarm](lab-3/step-1-create-your-first-swarm.md)
+* [Step 2: Deploy your first service](lab-3/step-2-deploy-your-first-service.md)
+* [Step 3: Scale your service](lab-3/step-3-scale-your-service.md)
+* [Step 4: Rolling Updates](lab-3/step-4-rolling-updates.md)
+* [Step 5: Reconciliation](lab-3/step-5-reconciliation.md)
+* [Summary](lab-3/summary.md)
 
