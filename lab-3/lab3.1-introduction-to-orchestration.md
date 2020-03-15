@@ -1,20 +1,10 @@
 # Introduction to orchestration
 
-## Lab 3- Introduction to Orchestration
-
-© Copyright IBM Corporation 2017
-
-IBM, the IBM logo and ibm.com are trademarks of International Business Machines Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the Web at "Copyright and trademark information" at www.ibm.com/legal/copytrade.shtml.
-
-This document is current as of the initial date of publication and may be changed by IBM at any time.
-
-The information contained in these materials is provided for informational purposes only, and is provided AS IS without warranty of any kind, express or implied. IBM shall not be responsible for any damages arising out of the use of, or otherwise related to, these materials. Nothing contained in these materials is intended to, nor shall have the effect of, creating any warranties or representations from IBM or its suppliers or licensors, or altering the terms and conditions of the applicable license agreement governing the use of IBM software. References in these materials to IBM products, programs, or services do not imply that they will be available in all countries in which IBM operates. This information is based on current IBM product plans and strategy, which are subject to change by IBM without notice. Product release dates and/or capabilities referenced in these materials may change at any time at IBM's sole discretion based on market opportunities or other factors, and are not intended to be a commitment to future product or feature availability in any way.
-
 ## Overview
 
 So far you have learned how to run applications using docker on your local machine, but what about running dockerized applications in production? There are a number of problems that come with building an application for production: scheduling services across distributed nodes, maintaining high availability, implementing reconciliation, scaling, and logging... just to name a few.
 
-There are several orchestration solutions out there that help you solve some of these problems. One example is the [IBM Bluemix Container Service](https://www.ibm.com/cloud-computing/bluemix/containers) which uses [Kubernetes](https://kubernetes.io/) to run containers in production.
+There are several orchestration solutions out there that help you solve some of these problems. One example is the [IBM Cloud Kubernetes Service](https://www.ibm.com/cloud/container-service/) which uses [Kubernetes](https://kubernetes.io/) to run containers in production.
 
 Before we introduce you to Kubernetes, we will teach you how to orchestrate applications using Docker Swarm. Docker Swarm is the orchestration tool that comes built-in to the Docker Engine.
 
@@ -24,58 +14,7 @@ We will be using a few Docker commands in this lab. For full documentation on av
 
 In order to complete a lab about orchestrating an application that is deployed across multiple hosts, you need... well, multiple hosts. To make things easier, for this lab we will be using the multi-node support provided by [http://play-with-docker.com](http://play-with-docker.com). This is the easiest way to test out Docker Swarm, without having to deal with installing docker on multiple hosts yourself.
 
-## Step 1: Create your first swarm
-
-In this step, we will create our first swarm using play-with-docker.
-
-1. Navigate to [http://play-with-docker.com](http://play-with-docker.com)
-2. Click "add new instance" on the lefthand side three times to create three nodes
-
-Our first swarm cluster will have three nodes.
-
-1. Initialize the swarm on node 1
-
-   \`\`\`sh
-
-   $ docker swarm init --advertise-addr eth0
-
-   Swarm initialized: current node \(vq7xx5j4dpe04rgwwm5ur63ce\) is now a manager.
-
-To add a worker to this swarm, run the following command:
-
-```text
-docker swarm join \
---token SWMTKN-1-50qba7hmo5exuapkmrj6jki8knfvinceo68xjmh322y7c8f0pj-87mjqjho30uue43oqbhhthjui \
-10.0.120.3:2377
-```
-
-To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
-
-```text
-You can think of docker swarm as a special "mode" that is activated by the command: `docker swarm init`. The `--advertise-addr` specifies the address in which the other nodes will use to join the swarm.
-
-This `docker swarm init` command generates a join token. The token makes sure that no malicious nodes join our swarm. We will need to use this token to join the other nodes to the swarm. For convenience, the output includes the full command `docker swarm join` which you can just copy/paste to the other nodes. 
-
-4. On both node2 and node3, copy and run the `docker swarm join` command that was outputted to YOUR console by the last command.
-
-You now have a three node swarm!
-
-5. Back on node1, run `docker node ls` to verify your 3 node cluster.
-```sh
-$ docker node ls
-ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS
-7x9s8baa79l29zdsx95i1tfjp     node3               Ready               Active
-x223z25t7y7o4np3uq45d49br     node2               Ready               Active
-zdqbsoxa6x1bubg3jyjdmrnrn *   node1               Ready               Active              Leader
-```
-
-This command outputs the three nodes in our swarm. The \* next to the ID of the node represents the node that handled that specific command \(`docker node ls` in this case\).
-
-Our node consists of 1 manager node and 2 workers nodes. Managers handle commands and manage the state of the swarm. Workers cannot handle commands and are simply used to run containers at scale. By default, managers are also used to run containers.
-
-All `docker service` commands for the rest of this lab need to be executed on the manager node \(Node1\).
-
-**Note:** While we will control the Swarm directly from the node in which its running, you can control a docker swarm remotely by connecting to the docker engine of the manager via the remote API or activating a remote host from your local docker installation \(using the `$DOCKER_HOST` and `$DOCKER_CERT_PATH` environment variables\). This will become useful when you want to control production applications remotely instead of ssh-ing directly into production servers.
+## 
 
 ## Step 2: Deploy your first service
 

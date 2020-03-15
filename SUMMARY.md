@@ -1,6 +1,6 @@
 # Table of contents
 
-* [intro-to-docker-lab](README.md)
+* [Introduction](README.md)
 * [LICENSE](license.md)
 
 ## Lab 0
