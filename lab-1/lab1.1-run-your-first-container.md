@@ -29,8 +29,8 @@ We are going to use the Docker CLI to run our first container.
 
    ```bash
    docker container run -it ubuntu top
-   :'
-   Unable to find image 'ubuntu:latest' locally
+   : '
+   Unable to find image \'ubuntu:latest\' locally
    latest: Pulling from library/ubuntu 
    aafe6b5e13de: Pull complete
    0a2b43a72660: Pull complete 
@@ -47,7 +47,7 @@ We are going to use the Docker CLI to run our first container.
    The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
 
    ```bash
-    :'
+    : '
     top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
     Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
     %Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -82,7 +82,7 @@ We are going to use the Docker CLI to run our first container.
 
    ```bash
    docker container ls
-   :'
+   : '
    CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS                         PORTS                       NAMES
    b3ad2a23fab3        ubuntu                     "top"                    29 minutes ago      Up 29 minutes                                              goofy_nobel
    '
@@ -112,10 +112,12 @@ We are going to use the Docker CLI to run our first container.
    ```
 
    ```bash
+    : '
     UID        PID  PPID  C STIME TTY          TIME CMD
     root         1     0  0 20:34 ?        00:00:00 top
     root        17     0  0 21:06 ?        00:00:00 bash
     root        27    17  0 21:14 ?        00:00:00 ps -ef
+    '
    ```
 
    You should see only the `top` process, `bash` process and our `ps` process.

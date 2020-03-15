@@ -54,6 +54,7 @@ docker image build -t python-hello-world .
 ```
 
 ```bash
+: '
 > Sending build context to Docker daemon  3.072kB
 > Step 1/4 : FROM python:3.6.1-alpine
 > 3.6.1-alpine: Pulling from library/python
@@ -81,10 +82,10 @@ docker image build -t python-hello-world .
 >   Downloading MarkupSafe-1.0.tar.gz
 > Building wheels for collected packages: itsdangerous, MarkupSafe
 >   Running setup.py bdist_wheel for itsdangerous: started
->   Running setup.py bdist_wheel for itsdangerous: finished with status 'done'
+>   Running setup.py bdist_wheel for itsdangerous: finished with status \'done\'
 >   Stored in directory: /root/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
 >   Running setup.py bdist_wheel for MarkupSafe: started
->   Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+>   Running setup.py bdist_wheel for MarkupSafe: finished with status \'done\'
 >   Stored in directory: /root/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
 > Successfully built itsdangerous MarkupSafe
 > Installing collected packages: itsdangerous, click, Werkzeug, MarkupSafe, Jinja2, flask
@@ -100,6 +101,7 @@ docker image build -t python-hello-world .
 > Removing intermediate container b92b506ee093
 > Successfully built f1b2781b3111
 > Successfully tagged python-hello-world:latest
+'
 ```
 
 Verify that your image shows up in your image list via `docker image ls`.
@@ -109,9 +111,11 @@ docker image ls
 ```
 
 ```bash
+: '
 > REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
 > python-hello-world   latest              f1b2781b3111        26 seconds ago      99.3MB
 > python               3.6.1-alpine        c86415c03c37        8 days ago          88.7MB
+'
 ```
 
 Notice that your base image, python:3.6.1-alpine, is also in your list.

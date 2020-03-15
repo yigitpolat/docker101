@@ -30,6 +30,7 @@ docker image build -t $DOCKER_USERNAME/python-hello-world .
 ```
 
 ```bash
+: '
 > Sending build context to Docker daemon  3.072kB
 > Step 1/4 : FROM python:3.6.1-alpine
 >  ---> c86415c03c37
@@ -44,6 +45,7 @@ docker image build -t $DOCKER_USERNAME/python-hello-world .
 > Removing intermediate container 23a955e881fc
 > Successfully built 3e08b2eeace1
 > Successfully tagged jzaccone/python-hello-world:latest
+'
 ```
 
 Notice the "Using cache" for steps 1-3. These layers of the Docker Image have already been built and `docker image build` will use these layers from the cache instead of rebuilding them.
@@ -53,6 +55,7 @@ docker push $DOCKER_USERNAME/python-hello-world
 ```
 
 ```bash
+: '
 > The push refers to a repository [docker.io/<DOCKER_USERNAME>/python-hello-world]
 > 94525867566e: Pushed 
 > 64d445ecbe93: Layer already exists 
@@ -62,6 +65,7 @@ docker push $DOCKER_USERNAME/python-hello-world
 > ed06208397d5: Layer already exists 
 > 5accac14015f: Layer already exists 
 > latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc8688573ab1a3a size: 1786
+'
 ```
 
 There is a caching mechanism in place for pushing layers too. Docker Hub already has all but one of the layers from an earlier push, so it only pushes the one layer that has changed.

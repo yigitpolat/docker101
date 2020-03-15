@@ -39,6 +39,7 @@ docker push $DOCKER_USERNAME/python-hello-world
 ```
 
 ```bash
+: '
 > The push refers to a repository [docker.io/<DOCKER_USERNAME>/python-hello-world]
 > 94525867566e: Pushed 
 > 64d445ecbe93: Layer already exists 
@@ -48,6 +49,7 @@ docker push $DOCKER_USERNAME/python-hello-world
 > ed06208397d5: Layer already exists 
 > 5accac14015f: Layer already exists 
 > latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc8688573ab1a3a size: 1786
+'
 ```
 
 To look more closely at layers, you can use the `docker image history` command of the python image we created.
@@ -57,6 +59,7 @@ docker image history python-hello-world
 ```
 
 ```bash
+: '
 > IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 > f1b2781b3111        5 minutes ago       /bin/sh -c #(nop) COPY file:0114358808a1bb...   159B                
 > 0ab91286958b        5 minutes ago       /bin/sh -c #(nop)  CMD ["python" "app.py"]      0B                  
@@ -73,6 +76,7 @@ docker image history python-hello-world
 > <missing>           8 days ago          /bin/sh -c #(nop)  ENV PATH=/usr/local/bin...   0B                  
 > <missing>           9 days ago          /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
 > <missing>           9 days ago          /bin/sh -c #(nop) ADD file:cf1b74f7af8abcf...   4.81MB
+'
 ```
 
 Each line represents a layer of the image. You'll notice that the top lines match to your Dockerfile that you created, and the lines below are pulled from the parent python image. Don't worry about the "\" tags. These are still normal layers; they have just not been given an ID by the docker system.

@@ -11,8 +11,10 @@ Completing this lab results in a bunch of running containers on your host. Let's
    ```
 
    ```bash
+    : '
     > CONTAINER ID        IMAGE                COMMAND             CREATED             STATUS              PORTS                    NAMES
     > 0b2ba61df37f        python-hello-world   "python app.py"     7 minutes ago       Up 7 minutes        0.0.0.0:5001->5000/tcp   practical_kirch
+    '
    ```
 
    Then run `docker container stop [container id]` for each container in the list.
@@ -31,6 +33,7 @@ Completing this lab results in a bunch of running containers on your host. Let's
    ```
 
    ```bash
+   : '
    > WARNING! This will remove:
    >         - all stopped containers
    >         - all volumes not used by at least one container
@@ -41,5 +44,6 @@ Completing this lab results in a bunch of running containers on your host. Let's
    > 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729fc27dc01b82b5aaafa26
    > 
    > Total reclaimed space: 300.3kB
+   '
    ```
 

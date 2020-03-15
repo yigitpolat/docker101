@@ -12,7 +12,7 @@
    ```
 
    ```bash
-   :'
+   : '
    Unable to find image \'nginx:latest\' locally
    latest: Pulling from library/nginx
    36a46ebd5019: Pull complete 
@@ -39,7 +39,7 @@
 
    ```bash
     docker container run --detach --publish 8081:27017 --name mongo mongo:3.4
-    :'
+    : '
     Unable to find image \'mongo:3.4\' locally
     3.4: Pulling from library/mongo
     d13d02fa248d: Already exists 
@@ -69,7 +69,7 @@
    ```
 
    ```bash
-    :'
+    : '
     CONTAINER ID        IMAGE               COMMAND                  CREATED                  STATUS              PORTS                     NAMES
     d6777df89fea        nginx               "nginx -g \'daemon ..."   Less than a second ago   Up 2 seconds        0.0.0.0:8080->80/tcp      nginx
     ead80a0db505        mongo               "docker-entrypoint..."   17 seconds ago           Up 19 seconds       0.0.0.0:8081->27017/tcp   mongo

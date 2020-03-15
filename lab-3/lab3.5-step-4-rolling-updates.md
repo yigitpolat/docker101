@@ -15,29 +15,19 @@ After a few seconds, run `docker service ps nginx1` to see all the images have b
 ```bash
 docker service ps nginx1
 : '
-ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STAT
-E             ERROR               PORTS
-di2hmdpw0j0z        nginx1.1            nginx:1.13          node1               Running             Running 50 s
-econds ago
-iu3ksewv7qf9         \_ nginx1.1        nginx:1.12          node1               Shutdown            Shutdown 52
-seconds ago
-qsk6gw43fgfr        nginx1.2            nginx:1.13          node2               Running             Running 47 s
-econds ago
-lfz1bhl6v77r         \_ nginx1.2        nginx:1.12          node2               Shutdown            Shutdown 49
-seconds ago
-r4429oql42z9        nginx1.3            nginx:1.13          node3               Running             Running 41 s
-econds ago
-qururb043dwh         \_ nginx1.3        nginx:1.12          node3               Shutdown            Shutdown 43
-seconds ago
-jfkepz8tqy9g        nginx1.4            nginx:1.13          node2               Running             Running 44 s
-econds ago
-q53jgeeq7y1x         \_ nginx1.4        nginx:1.12          node3               Shutdown            Shutdown 45
-seconds ago
-n15o01ouv2uf        nginx1.5            nginx:1.13          node3               Running             Running 39 s
-econds ago
-xj271k2829uz         \_ nginx1.5        nginx:1.12          node1               Shutdown            Shutdown 40
-seconds ago
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE             ERROR               PORTS
+di2hmdpw0j0z        nginx1.1            nginx:1.13          node1               Running             Running 50 seconds ago
+iu3ksewv7qf9         \_ nginx1.1        nginx:1.12          node1               Shutdown            Shutdown 52 seconds ago
+qsk6gw43fgfr        nginx1.2            nginx:1.13          node2               Running             Running 47 seconds ago
+lfz1bhl6v77r         \_ nginx1.2        nginx:1.12          node2               Shutdown            Shutdown 49 seconds ago
+r4429oql42z9        nginx1.3            nginx:1.13          node3               Running             Running 41 seconds ago
+qururb043dwh         \_ nginx1.3        nginx:1.12          node3               Shutdown            Shutdown 43 seconds ago
+jfkepz8tqy9g        nginx1.4            nginx:1.13          node2               Running             Running 44 seconds ago
+q53jgeeq7y1x         \_ nginx1.4        nginx:1.12          node3               Shutdown            Shutdown 45 seconds ago
+n15o01ouv2uf        nginx1.5            nginx:1.13          node3               Running             Running 39 seconds ago
+xj271k2829uz         \_ nginx1.5        nginx:1.12          node1               Shutdown            Shutdown 40 seconds ago
 '
 ```
 
 You have successfully updated your app to the latest version of nginx!
+

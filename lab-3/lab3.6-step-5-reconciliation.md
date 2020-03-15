@@ -8,20 +8,20 @@ We are going to remove a node, and see tasks of our nginx1 service be reschedule
 
 1. For the sake of clean output, first create a brand new service by copying the line below. We will change the name, and the publish port to avoid conflicts with our existing service. We will also add the `--replicas` command to scale the service with 5 instances.
 
-    ```bash
+   ```bash
     docker service create --detach=true --name nginx2 --replicas=5 --publish 81:80  --mount source=/etc/hostname,target=/usr/share/nginx/html/index.html,type=bind,ro nginx:1.12
-    aiqdh5n9fyacgvb2g82s412js
-    ```
+    # aiqdh5n9fyacgvb2g82s412js
+   ```
 
 2. On Node1, use `watch` to watch the update from the output of `docker service ps`. Note "watch" is a linux utility and might not be available on other platforms.
 
-    ```bash
+   ```bash
     watch -n 1 docker service ps nginx2
-    ```
+   ```
 
-    This should result in a window that looks like this:
+   This should result in a window that looks like this:
 
-    ```bash
+   ```bash
     Every 1s: docker service ps nginx1 2                                                                                              2017-05-12 15:29:20
     ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
     6koehbhsfbi7        nginx2.1            nginx:1.12          node3               Running             Running 21 seconds ago
@@ -29,19 +29,19 @@ We are going to remove a node, and see tasks of our nginx1 service be reschedule
     8jc41tgwowph        nginx2.3            nginx:1.12          node2               Running             Running 27 seconds ago
     n5n8zryzg6g6        nginx2.4            nginx:1.12          node1               Running             Running 26 seconds ago
     cnofhk1v5bd8        nginx2.5            nginx:1.12          node2               Running             Running 27 seconds ago
-    ```
+   ```
 
 3. Click on Node3, and type the command to leave the swarm cluster.
 
-    ```bash
+   ```bash
     docker swarm leave
-    ```
+   ```
 
-    This is the "nice" way to leave the swarm, but you can also kill the node and the following behavior will be the same.
+   This is the "nice" way to leave the swarm, but you can also kill the node and the following behavior will be the same.
 
 4. Click on Node1 to watch the reconciliation in action. You should see that the swarm will attempt to get back to the declared state by rescheduling the containers that were running on node3 to node1 and node2 automatically.
 
-    ```bash
+   ```bash
     $ docker service ps nginx2
     ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE            ERROR               PORTS
     jeq4604k1v9k        nginx2.1            nginx:1.12          node1               Running             Running 5 seconds ago
@@ -51,7 +51,7 @@ We are going to remove a node, and see tasks of our nginx1 service be reschedule
     n5n8zryzg6g6        nginx2.4            nginx:1.12          node1               Running             Running 26 seconds ago
     cnofhk1v5bd8        nginx2.5            nginx:1.12          node2               Running             Running 27 seconds ago
     [node1] (loc
-    ```
+   ```
 
 ## How many nodes?
 

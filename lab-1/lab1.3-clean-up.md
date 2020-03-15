@@ -6,7 +6,8 @@ Completing this lab results in a bunch of running containers on your host. Let's
 
    ```bash
     docker container ls
-    :'CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
+    : '
+    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
     d6777df89fea        nginx               "nginx -g \'daemon ..."   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp      nginx
     ead80a0db505        mongo               "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:8081->27017/tcp   mongo
     af549dccd5cf        ubuntu              "top"                    8 minutes ago       Up 8 minutes                                  priceless_kepler
@@ -17,7 +18,8 @@ Completing this lab results in a bunch of running containers on your host. Let's
 
    ```bash
    docker container stop d67 ead af5
-   :'d67
+   : '
+   d67
    ead
    af5
    '
@@ -31,7 +33,8 @@ Completing this lab results in a bunch of running containers on your host. Let's
 
    ```bash
     docker system prune
-    :'WARNING! This will remove:
+    : '
+    WARNING! This will remove:
             - all stopped containers
             - all volumes not used by at least one container
             - all networks not used by at least one container
