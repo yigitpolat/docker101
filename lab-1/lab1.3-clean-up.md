@@ -2,34 +2,36 @@
 
 Completing this lab results in a bunch of running containers on your host. Let's clean these up.
 
-1. First get a list of the containers running using `docker container ls`. 
-
-    ```bash
-    $ docker container ls
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
-    d6777df89fea        nginx               "nginx -g 'daemon ..."   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp      nginx
-    ead80a0db505        mongo               "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:8081->27017/tcp   mongo
-    af549dccd5cf        ubuntu              "top"                    8 minutes ago       Up 8 minutes                                  priceless_kepler
-    ```
-
-2. Next,  run `docker container stop [container id]` for each container in the list. You can also use the names of the containers that you specified before.
+1. First get a list of the containers running using `docker container ls`.
 
    ```bash
-   $ docker container stop d67 ead af5
-   d67
-   ead
-   af5
+    docker container ls
+    :'CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
+    d6777df89fea        nginx               "nginx -g \'daemon ..."   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp      nginx
+    ead80a0db505        mongo               "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:8081->27017/tcp   mongo
+    af549dccd5cf        ubuntu              "top"                    8 minutes ago       Up 8 minutes                                  priceless_kepler
+    '
    ```
 
-    **Note**: You only have to reference enough digits of the ID to be unique. Three digits is almost always enough.
+2. Next, run `docker container stop [container id]` for each container in the list. You can also use the names of the containers that you specified before.
+
+   ```bash
+   docker container stop d67 ead af5
+   :'d67
+   ead
+   af5
+   '
+   ```
+
+   **Note**: You only have to reference enough digits of the ID to be unique. Three digits is almost always enough.
 
 3. Remove the stopped containers
 
-    `docker system prune` is a really handy command to clean up your system. It will remove any stopped containers, unused volumes and networks, and dangling images.
+   `docker system prune` is a really handy command to clean up your system. It will remove any stopped containers, unused volumes and networks, and dangling images.
 
-    ```bash
-    $ docker system prune
-    WARNING! This will remove:
+   ```bash
+    docker system prune
+    :'WARNING! This will remove:
             - all stopped containers
             - all volumes not used by at least one container
             - all networks not used by at least one container
@@ -41,4 +43,6 @@ Completing this lab results in a bunch of running containers on your host. Let's
     31617fdd8e5f584c51ce182757e24a1c9620257027665c20be75aa3ab6591740
 
     Total reclaimed space: 12B
-    ```
+    '
+   ```
+

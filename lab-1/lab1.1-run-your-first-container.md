@@ -22,30 +22,32 @@ Completed Lab 0: You must have docker installed, or be using [http://play-with-d
 
 We are going to use the Docker CLI to run our first container.
 
-1. Open a terminal on your local computer
+1. Open a terminal on your local computer 
 2. Run `docker container run -t ubuntu top`
 
    Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly.
 
    ```bash
-    docker container run -it ubuntu top
+   docker container run -it ubuntu top
+   :'
+   Unable to find image 'ubuntu:latest' locally
+   latest: Pulling from library/ubuntu 
+   aafe6b5e13de: Pull complete
+   0a2b43a72660: Pull complete 
+   18bdd1e546d2: Pull complete 
+   8198342c3e05: Pull complete 
+   f56970a44fd4: Pull complete 
+   Digest: sha256:f3a61450ae43896c4332bda5e78b453f4a93179045f20c8181043b26b5e79028
+   Status: Downloaded newer image for ubuntu:latest
+   '
    ```
 
-   ```bash
-    Unable to find image 'ubuntu:latest' locally
-    latest: Pulling from library/ubuntu
-    aafe6b5e13de: Pull complete 
-    0a2b43a72660: Pull complete 
-    18bdd1e546d2: Pull complete 
-    8198342c3e05: Pull complete 
-    f56970a44fd4: Pull complete 
-    Digest: sha256:f3a61450ae43896c4332bda5e78b453f4a93179045f20c8181043b26b5e79028
-    Status: Downloaded newer image for ubuntu:latest
-   ```
+
 
    The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
 
    ```bash
+    :'
     top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
     Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
     %Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -54,13 +56,14 @@ We are going to use the Docker CLI to run our first container.
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND    
         1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
+   '
    ```
 
    `top` is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the `top` process itself. We don't see other processes from our host in this list because of the PID namespace isolation.
 
    Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run `top` while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran `top` on the host.
 
-   Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.
+   Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.  
 
 3. Inspect the container with `docker container exec`
 
@@ -69,32 +72,32 @@ We are going to use the Docker CLI to run our first container.
    Open a new terminal. To open a new terminal connected to node1 using play-with-docker.com, click "Add New Instance" on the lefthand side, then ssh from node2 into node1 using the IP that is listed by 'node1 '. For example:
 
    ```bash
-    [node2] (local) root@192.168.0.17 ~
-    $ ssh 192.168.0.18
-    [node1] (local) root@192.168.0.18 ~
-    $
+    # [node2] (local) root@192.168.0.17 ~
+    ssh 192.168.0.18
+    # [node1] (local) root@192.168.0.18 ~
+    # $
    ```
 
    In the new terminal, use the `docker container ls` command to get the ID of the running container you just created.
 
    ```bash
-    docker container ls
+   docker container ls
+   :'
+   CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS                         PORTS                       NAMES
+   b3ad2a23fab3        ubuntu                     "top"                    29 minutes ago      Up 29 minutes                                              goofy_nobel
+   '
    ```
 
-   ```bash
-    CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS                         PORTS                       NAMES
-    b3ad2a23fab3        ubuntu                     "top"                    29 minutes ago      Up 29 minutes                                              goofy_nobel
-   ```
+
 
    Then use that id to run `bash` inside that container using the `docker container exec` command. Since we are using bash and want to interact with this container from our terminal, use `-it` flags to run using interactive mode while allocating a psuedo-terminal.
 
    ```bash
-    docker container exec -it b3ad2a23fab3 bash
+   docker container exec -it b3ad2a23fab3 bash
+   # root@b3ad2a23fab3:/#
    ```
 
-   ```bash
-    root@b3ad2a23fab3:/#
-   ```
+
 
    And Voila! We just used the `docker container exec` command to "enter" our container's namespaces with our bash process. Using `docker container exec` with `bash` is a common pattern to inspect a docker container.
 

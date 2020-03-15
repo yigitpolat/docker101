@@ -17,11 +17,16 @@ if __name__ == "__main__":
 
 This is a simple python app that uses flask to expose a http web server on port 5000 \(5000 is the default port for flask\). Don't worry if you are not too familiar with python or flask, these concepts can be applied to an application written in any language.
 
+### Optional Step for Local Run
+
 **Optional:** If you have python and pip installed, you can run this app locally. If not, move on to the next step.
+
+{% page-ref page="lab2.3-step-2-create-and-build-the-docker-image.md" %}
 
 ```bash
 python3 --version
 ```
+
 ```bash
 > Python 3.6.1
 ```
@@ -29,6 +34,7 @@ python3 --version
 ```bash
 pip3 --version
 ```
+
 ```bash
 > pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)
 ```
@@ -54,9 +60,10 @@ johns-mbp:test johnzaccone$ pip3 install flask
 ```
 
 ```bash
-python3 app.py 
+python3 app.py
 ```
 
 ```bash
 >  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
+

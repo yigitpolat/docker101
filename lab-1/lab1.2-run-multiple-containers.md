@@ -12,7 +12,8 @@
    ```
 
    ```bash
-   Unable to find image 'nginx:latest' locally
+   :'
+   Unable to find image \'nginx:latest\' locally
    latest: Pulling from library/nginx
    36a46ebd5019: Pull complete 
    57168433389f: Pull complete 
@@ -20,6 +21,7 @@
    Digest: sha256:c15f1fb8fd55c60c72f940a76da76a5fccce2fefa0dd9b17967b9e40b0355316
    Status: Downloaded newer image for nginx:latest
    5e1bf0e6b926bd73a66f98b3cbe23d04189c16a43d55dd46b8486359f6fdf048
+   '
    ```
 
    We are using a couple of new flags here. The --detach flag will run this container in the background. The publish flag publishes port 80 in the container \(the default port for nginx\), via port 8080 on our host. Remember that the NET namespace gives processes of the container their own network stack. The --publish flag is a feature that allows us to expose networking through the container onto the host.
@@ -36,8 +38,9 @@
 4. Run a mongo DB server Now, run a mongoDB server. We will use the [official mongoDB image](https://store.docker.com/images/mongo) from the Docker Store. Instead of using the `latest` tag \(which is the default if no tag is specified\), we will use a specific version of the mongo image: 3.4.
 
    ```bash
-    $ docker container run --detach --publish 8081:27017 --name mongo mongo:3.4
-    Unable to find image 'mongo:3.4' locally
+    docker container run --detach --publish 8081:27017 --name mongo mongo:3.4
+    :'
+    Unable to find image \'mongo:3.4\' locally
     3.4: Pulling from library/mongo
     d13d02fa248d: Already exists 
     bc8e2652ce92: Pull complete 
@@ -53,6 +56,7 @@
     Digest: sha256:d13c897516e497e898c229e2467f4953314b63e48d4990d3215d876ef9d1fc7c
     Status: Downloaded newer image for mongo:3.4
     d8f614a4969fb1229f538e171850512f10f490cb1a96fca27e4aa89ac082eba5
+    '
    ```
 
    Again, since this is the first time we are running a mongo container, we will pull down the mongo image from the Docker Store. We are using the `--publish` flag to expose the 27017 mongo port on our host. We have to use a port other than 8080 for the host mapping, since that port is already exposed on our host. Again refer to the [official docs](https://store.docker.com/images/mongo) on the Docker Store to get more details about using the mongo image.
@@ -65,10 +69,12 @@
    ```
 
    ```bash
+    :'
     CONTAINER ID        IMAGE               COMMAND                  CREATED                  STATUS              PORTS                     NAMES
-    d6777df89fea        nginx               "nginx -g 'daemon ..."   Less than a second ago   Up 2 seconds        0.0.0.0:8080->80/tcp      nginx
+    d6777df89fea        nginx               "nginx -g \'daemon ..."   Less than a second ago   Up 2 seconds        0.0.0.0:8080->80/tcp      nginx
     ead80a0db505        mongo               "docker-entrypoint..."   17 seconds ago           Up 19 seconds       0.0.0.0:8081->27017/tcp   mongo
     af549dccd5cf        ubuntu              "top"                    5 minutes ago            Up 5 minutes                                  priceless_kepler
+   ' 
    ```
 
    You should see that you have an Nginx web server container, and a MongoDB container running on your host. Note that we have not configured these containers to talk to each other.
