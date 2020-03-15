@@ -3,9 +3,9 @@
 * [intro-to-docker-lab](README.md)
 * [LICENSE](license.md)
 
-## Lab 0 <a id="lab-0-1"></a>
+## Lab 0
 
-* [Install Docker](lab-0-1/lab0-install-docker.md)
+* [Install Docker](lab-0/lab0.1-install-docker.md)
 
 ## Lab 1
 
