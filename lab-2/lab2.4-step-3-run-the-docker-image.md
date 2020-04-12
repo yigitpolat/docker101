@@ -13,13 +13,10 @@ The `-p` flag maps a port running inside the container to your host. In this cas
 
 ## Open on browser
 
-- Navigate to [http://localhost:5001](http://localhost:5001) in a browser to see the results.
-
-- If you are using katacoda, click on the link in the left-hand pane that says: View port at [https://....environments.katacoda.com](https://....environments.katacoda.com)" then type in 5001 and click "Display Port".
-
-- In play-with-docker, click the link `5001` that should appear near the top of your session. 
-
-- If all else fails: `curl localhost:5001` works...
+* Navigate to [http://localhost:5001](http://localhost:5001) in a browser to see the results.
+* If you are using katacoda, click on the link in the left-hand pane that says: View port at [https://....environments.katacoda.com](https://....environments.katacoda.com)" then type in 5001 and click "Display Port".
+* In play-with-docker, click the link `5001` that should appear near the top of your session.
+* If all else fails: `curl localhost:5001` works...
 
 You should see "hello world!" on your browser.
 

@@ -2,14 +2,14 @@
 
 ## Run Multiple Containers
 
-1. Explore the Docker Store  The [Docker Store](https://store.docker.com) is the public central registry for Docker images. Anyone can share images here publicly. The Docker Store contains community and official images that can also be found directly on the [Docker Hub](https://hub.docker.com/explore/). When searching for images you will find filters for "Store" vs "Community" images. 
+1. Explore the Docker Store The [Docker Store](https://store.docker.com) is the public central registry for Docker images. Anyone can share images here publicly. The Docker Store contains community and official images that can also be found directly on the [Docker Hub](https://hub.docker.com/explore/). When searching for images you will find filters for "Store" vs "Community" images.
 
-   - "Store" images include content that has been verified and scanned for security vulnerabilities by Docker. 
-   - Go one step further and search for "Certified" images, that are deemed enterprise-ready and are tested with Docker Enterprise Edition product. 
+   * "Store" images include content that has been verified and scanned for security vulnerabilities by Docker. 
+   * Go one step further and search for "Certified" images, that are deemed enterprise-ready and are tested with Docker Enterprise Edition product. 
 
-   > It is important to avoid using unverified content from the Docker Store when developing your own images that are intended to be deployed into the production environment. These unverified images may contain security vulnerabilities or possibly even malicious software.  
+   > It is important to avoid using unverified content from the Docker Store when developing your own images that are intended to be deployed into the production environment. These unverified images may contain security vulnerabilities or possibly even malicious software.
 
-   In Step 2 of this lab, we will start a couple of containers using some verified images from the Docker Store: nginx web server, and mongo database. 
+   In Step 2 of this lab, we will start a couple of containers using some verified images from the Docker Store: nginx web server, and mongo database.
 
 2. Run an Nginx server
 
@@ -30,27 +30,27 @@
    5e1bf0e6b926bd73a66f98b3cbe23d04189c16a43d55dd46b8486359f6fdf048
    ```
 
-   We are using a couple of new flags here. 
-   
-   - The `--detach` flag will run this container in the background. 
-   - The `--publish` flag publishes port 80 in the container \(the default port for nginx\), via port 8080 on our host. Remember that the *NET* namespace gives processes of the container their own network stack. The --publish flag is a feature that allows us to expose networking through the container onto the host.
+   We are using a couple of new flags here.
 
-      > How do you know port 80 is the default port for nginx? Because it is listed in the [documentation](https://store.docker.com/images/nginx) on the Docker Store. In general, the documentation for the verified images is very good, and you will want to refer to them when running containers using those images.
+   * The `--detach` flag will run this container in the background. 
+   * The `--publish` flag publishes port 80 in the container \(the default port for nginx\), via port 8080 on our host. Remember that the _NET_ namespace gives processes of the container their own network stack. The --publish flag is a feature that allows us to expose networking through the container onto the host.
 
-   - We are also specifying the `--name` flag, which names the container. Every container has a name, if you don't specify one, Docker will **randomly** assign one for you. Specifying your own name makes it easier to run subsequent commands on your container since *you can reference the name instead of the id* of the container. For example: `docker container inspect nginx` instead of `docker container inspect 5e1`.
+     > How do you know port 80 is the default port for nginx? Because it is listed in the [documentation](https://store.docker.com/images/nginx) on the Docker Store. In general, the documentation for the verified images is very good, and you will want to refer to them when running containers using those images.
+
+   * We are also specifying the `--name` flag, which names the container. Every container has a name, if you don't specify one, Docker will **randomly** assign one for you. Specifying your own name makes it easier to run subsequent commands on your container since _you can reference the name instead of the id_ of the container. For example: `docker container inspect nginx` instead of `docker container inspect 5e1`.
 
    Since this is the first time you are running the nginx container, it will pull down the nginx image from the Docker Store. Subsequent containers created from the Nginx image will use the existing image located on your host.
 
    Nginx is a lightweight web server. You can access it on port 8080 on your localhost.
 
-3. Access the nginx server on [http://localhost:8080](http://localhost:8080). If you are using play-with-docker, look for the `8080` link near the top of the page.   ![](../.gitbook/assets/lab1_step2_nginx.png) 
+3. Access the nginx server on [http://localhost:8080](http://localhost:8080). If you are using play-with-docker, look for the `8080` link near the top of the page. ![](https://github.com/volaka/intro-to-docker-lab/tree/da2a591b53ebff09bafd4eadbc4bf9ab5efd9c1a/.gitbook/assets/lab1_step2_nginx.png)
 4. Run a mongo DB server Now, run a mongoDB server. We will use the [official mongoDB image](https://store.docker.com/images/mongo) from the Docker Store. Instead of using the `latest` tag \(which is the default if no tag is specified\), we will use a specific version of the mongo image: 3.4.
 
    ```bash
     docker container run --detach --publish 8081:27017 --name mongo mongo:3.4
-    ```
+   ```
 
-    ```bash
+   ```bash
     Unable to find image 'mongo:3.4' locally
     3.4: Pulling from library/mongo
     d13d02fa248d: Already exists 
@@ -71,7 +71,7 @@
 
    Again, since this is the first time we are running a mongo container, we will pull down the mongo image from the Docker Store. We are using the `--publish` flag to expose the 27017 mongo port on our host. We have to use a port other than 8080 for the host mapping, since that port is already exposed on our host. Again refer to the [official docs](https://store.docker.com/images/mongo) on the Docker Store to get more details about using the mongo image.
 
-5. Access [http://localhost:8081](http://localhost:8081) to see some output from mongo. If you are using play-with-docker, look for the `8081` link near the top of the page.   ![](../.gitbook/assets/lab1_step2_mongo.png) 
+5. Access [http://localhost:8081](http://localhost:8081) to see some output from mongo. If you are using play-with-docker, look for the `8081` link near the top of the page. ![](https://github.com/volaka/intro-to-docker-lab/tree/da2a591b53ebff09bafd4eadbc4bf9ab5efd9c1a/.gitbook/assets/lab1_step2_mongo.png)
 6. Check your running containers with `docker container ls`
 
    ```bash

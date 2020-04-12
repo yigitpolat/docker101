@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
 This is a simple python app that uses flask to expose a http web server on port 5000 \(5000 is the default port for flask\). Don't worry if you are not too familiar with python or flask, these concepts can be applied to an application written in any language.
 
-### Optional Step for Local Run
+## Optional Step for Local Run
 
 **Optional:** If you have python and pip installed, you can run this app locally. If not, move on to the next step.
 

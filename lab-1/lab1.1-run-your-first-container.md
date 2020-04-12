@@ -45,11 +45,9 @@ We are going to use the Docker CLI to run our first container.
    Status: Downloaded newer image for ubuntu:latest
    ```
 
+The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
 
-
-   The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
-
-   ```bash
+```bash
     top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
     Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
     %Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -58,15 +56,15 @@ We are going to use the Docker CLI to run our first container.
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND    
         1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
-   ```
+```
 
-   `top` is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the `top` process itself. We don't see other processes from our host in this list because of the PID namespace isolation.
+`top` is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the `top` process itself. We don't see other processes from our host in this list because of the PID namespace isolation.
 
-   Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run `top` while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran `top` on the host.
+Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run `top` while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran `top` on the host.
 
-   Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.  
+Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.
 
-3. Inspect the container with `docker container exec`
+1. Inspect the container with `docker container exec`
 
    The `docker container exec` command is a way to "enter" a running container's namespaces with a new process.
 
@@ -129,7 +127,7 @@ We are going to use the Docker CLI to run our first container.
     # Lots of processes!
    ```
 
-   ## Technical deep dive to namespaces
+   **Technical deep dive to namespaces**
 
    **PID** is just one of the linux namespaces that provides containers with isolation to system resources. Other linux namespaces include:
 
@@ -145,5 +143,5 @@ We are going to use the Docker CLI to run our first container.
 
      In additional to running linux containers on Windows using a linux subsystem, native Windows containers are now possible due the creation of container primitives on the Windows OS. Native Windows containers can be run on Windows 10 or Windows Server 2016 or newer.
 
-4. Clean up the container running the `top` processes by typing: `<ctrl>-c.`
+2. Clean up the container running the `top` processes by typing: `<ctrl>-c.`
 
