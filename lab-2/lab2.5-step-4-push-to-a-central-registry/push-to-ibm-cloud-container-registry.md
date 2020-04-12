@@ -22,6 +22,7 @@ In this section, we will create a private container registry to deploy our built
     --name ibmcloud-devtools \
     volaka/ibmcloud-devtools
     docker exec -it ibmcloud-devtools ash
+    cd ~/userpath
    ```
 
 2. Login to IBM Cloud with your credentials.
