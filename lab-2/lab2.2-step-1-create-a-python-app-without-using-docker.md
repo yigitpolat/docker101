@@ -3,6 +3,7 @@
 Run the following command to create a file named `app.py` with a simple python program. \(copy-paste the entire code block\)
 
 ```bash
+mkdir app && cd app
 echo 'from flask import Flask
 
 app = Flask(__name__)

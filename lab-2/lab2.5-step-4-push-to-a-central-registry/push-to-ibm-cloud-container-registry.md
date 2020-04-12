@@ -13,6 +13,7 @@ In this section, we will create a private container registry to deploy our built
 1. Run ibmcloud-devtools container which includes all necessary dev tools to access and manage IBM Cloud through terminal.
 
    ```bash
+    cd ~/app
     docker run \
     -t \
     --detach \
@@ -20,7 +21,6 @@ In this section, we will create a private container registry to deploy our built
     -v $PWD:/root/userpath \
     --name ibmcloud-devtools \
     volaka/ibmcloud-devtools
-
     docker exec -it ibmcloud-devtools ash
    ```
 
