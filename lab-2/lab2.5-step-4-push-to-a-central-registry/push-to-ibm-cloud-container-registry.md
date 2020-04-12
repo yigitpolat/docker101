@@ -17,7 +17,7 @@ In this section, we will create a private container registry to deploy our built
     -t \
     --detach \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    v $PWD:/root \
+    -v $PWD:/root \
     --name ibmcloud-devtools \
     volaka/ibmcloud-devtools
 
