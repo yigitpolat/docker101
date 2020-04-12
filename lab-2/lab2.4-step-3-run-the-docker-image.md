@@ -13,11 +13,13 @@ The `-p` flag maps a port running inside the container to your host. In this cas
 
 ## Open on browser
 
-Navigate to [http://localhost:5001](http://localhost:5001) in a browser to see the results.
+- Navigate to [http://localhost:5001](http://localhost:5001) in a browser to see the results.
 
-If you are using katacoda, click on the link in the left-hand pane that says: View port at [https://....environments.katacoda.com](https://....environments.katacoda.com)" then type in 5001 and click "Display Port".
+- If you are using katacoda, click on the link in the left-hand pane that says: View port at [https://....environments.katacoda.com](https://....environments.katacoda.com)" then type in 5001 and click "Display Port".
 
-In play-with-docker, click the link `5001` that should appear near the top of your session. If all else fails: `curl localhost:5001` works...
+- In play-with-docker, click the link `5001` that should appear near the top of your session. 
+
+- If all else fails: `curl localhost:5001` works...
 
 You should see "hello world!" on your browser.
 
@@ -27,8 +29,18 @@ If you want to see logs from your application you can use the `docker container 
 
 ```bash
 docker container logs my-python-container
-#   * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-# 172.17.0.1 - - [28/Jun/2017 19:35:33] "GET / HTTP/1.1" 200 -
+```
+
+```bash
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+172.18.0.1 - - [12/Apr/2020 11:40:55] "GET /robots.txt HTTP/1.1" 404 -
+172.18.0.1 - - [12/Apr/2020 11:40:56] "GET / HTTP/1.1" 200 -
+172.18.0.1 - - [12/Apr/2020 11:40:56] "GET /favicon.ico HTTP/1.1" 404 -
 ```
 
 The Dockerfile is how you create reproducible builds for your application. A common workflow is to have your CI/CD automation run `docker image build` as part of its build process. Once images are built, they will be sent to a central registry, where it can be accessed by all environments \(such as a test environment\) that need to run instances of that application. In the next step, we will push our custom image to the public docker registry: the docker hub, where it can be consumed by other developers and operators.

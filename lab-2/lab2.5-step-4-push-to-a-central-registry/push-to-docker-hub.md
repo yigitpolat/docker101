@@ -37,7 +37,6 @@ docker push $DOCKER_USERNAME/python-hello-world
 ```
 
 ```bash
-: '
 > The push refers to a repository [docker.io/<DOCKER_USERNAME>/python-hello-world]
 > 2bce026769ac: Pushed 
 > 64d445ecbe93: Pushed 
@@ -47,7 +46,6 @@ docker push $DOCKER_USERNAME/python-hello-world
 > ed06208397d5: Mounted from library/python 
 > 5accac14015f: Mounted from library/python 
 > latest: digest: sha256:508238f264616bf7bf962019d1a3826f8487ed6a48b80bf41fd3996c7175fd0f size: 1786
-'
 ```
 
 ## Check out your image on docker hub in your browser

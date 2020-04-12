@@ -27,12 +27,13 @@ First rebuild, this time use your Docker Hub username in the build command.:
 
 ```bash
 docker image build -t $DOCKER_USERNAME/python-hello-world .
+ibmcloud cr build -t $ICR_URL/$ICR_NS/python-hello-world:v2
 ```
 
 ```bash
 : '
 > Sending build context to Docker daemon  3.072kB
-> Step 1/4 : FROM python:3.6.1-alpine
+> Step 1/4 : FROM python:3-alpine
 >  ---> c86415c03c37
 > Step 2/4 : RUN pip install flask
 >  ---> Using cache

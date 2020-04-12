@@ -35,21 +35,6 @@ pip3 --version
 
 ```bash
 pip3 install flask
-: '
-> Requirement already satisfied: flask in /usr/local/lib/python3.6/site-packages
-> Requirement already satisfied: Werkzeug>=0.7 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: itsdangerous>=0.21 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: Jinja2>=2.4 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: click>=2.0 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.6/site-packages (from Jinja2>=2.4->flask)
-johns-mbp:test johnzaccone$ pip3 install flask
-> Requirement already satisfied: flask in /usr/local/lib/python3.6/site-packages
-> Requirement already satisfied: itsdangerous>=0.21 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: Jinja2>=2.4 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: click>=2.0 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: Werkzeug>=0.7 in /usr/local/lib/python3.6/site-packages (from flask)
-> Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.6/site-packages (from Jinja2>=2.4->flask)
-'
 ```
 
 ```bash

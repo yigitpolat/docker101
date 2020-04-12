@@ -4,8 +4,8 @@ One of the major design properties of Docker is its use of the union file system
 
 Consider the Dockerfile that we created before:
 
-```text
-FROM python:3.6.1-alpine
+```Dockerfile
+FROM python:3-alpine
 RUN pip install flask
 CMD ["python","app.py"]
 COPY app.py /app.py
@@ -19,7 +19,7 @@ Each layer of the image is **read-only**, except for the very top layer which is
 
 Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.
 
-```text
+```Dockerfile
 FROM python:3.6.1-alpine
 RUN pip install flask
 CMD ["python","app2.py"]
