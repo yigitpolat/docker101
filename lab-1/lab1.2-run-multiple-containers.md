@@ -40,7 +40,7 @@ In Step 1 of this lab, we will start a couple of containers using some verified 
 
    Nginx is a lightweight web server. You can access it on port 8080 on your localhost.
 
-3. Access the nginx server on [http://localhost:8080](http://localhost:8080). If you are using play-with-docker, look for the `8080` link near the top of the page. ![](https://github.com/volaka/intro-to-docker-lab/tree/da2a591b53ebff09bafd4eadbc4bf9ab5efd9c1a/.gitbook/assets/lab1_step2_nginx.png)
+3. Access the nginx server on [http://localhost:8080](http://localhost:8080). If you are using play-with-docker, look for the `8080` link near the top of the page.
 4. Run a mongo DB server Now, run a mongoDB server. We will use the [official mongoDB image](https://hub.docker.com/images/mongo) from the Docker Hub. Instead of using the `latest` tag \(which is the default if no tag is specified\), we will use a specific version of the mongo image: 3.4.
 
    ```bash
@@ -68,7 +68,7 @@ In Step 1 of this lab, we will start a couple of containers using some verified 
 
    Again, since this is the first time we are running a mongo container, we will pull down the mongo image from the Docker Hub. We are using the `--publish` flag to expose the 27017 mongo port on our host. We have to use a port other than 8080 for the host mapping, since that port is already exposed on our host. Again refer to the [official docs](https://hub.docker.com/images/mongo) on the Docker Hub to get more details about using the mongo image.
 
-5. Access [http://localhost:8081](http://localhost:8081) to see some output from mongo. If you are using play-with-docker, look for the `8081` link near the top of the page. ![](https://github.com/volaka/intro-to-docker-lab/tree/da2a591b53ebff09bafd4eadbc4bf9ab5efd9c1a/.gitbook/assets/lab1_step2_mongo.png)
+5. Access [http://localhost:8081](http://localhost:8081) to see some output from mongo. If you are using play-with-docker, look for the `8081` link near the top of the page.
 6. Check your running containers with `docker container ls`
 
    ```bash
@@ -86,7 +86,7 @@ In Step 1 of this lab, we will start a couple of containers using some verified 
 
    You can see the "nginx" and "mongo" names that we gave to our containers, and the random name \(in my case "priceless\_kepler"\) that was generated for the ubuntu container. You can also see that the port mappings that we specified with the `--publish` flag. For more details information on these running containers you can use the `docker container inspect [container id]` command.
 
-   One thing you might notice is that the mongo container is running the `docker-entrypoint` command. This is the name of the executable that is run when the container is started. The mongo image requires some prior configuration before kicking off the DB process. You can see exactly what the script does by looking at it on [github](https://github.com/docker-library/mongo/blob/master/3.0/docker-entrypoint.sh). Typically, you can find the link to the github source from the image description page on the Docker Hub website.
+   One thing you might notice is that the mongo container is running the `docker-entrypoint` command. This is the name of the executable that is run when the container is started. The mongo image requires some prior configuration before kicking off the DB process. You can see exactly what the script does by looking at it on [github](https://github.com/docker-library/mongo/blob/master/docker-entrypoint.sh). Typically, you can find the link to the github source from the image description page on the Docker Hub website.
 
    Containers are self-contained and isolated, which means we can avoid potential conflicts between containers with different system or runtime dependencies. For example: deploying an app that uses Java 7 and another app that uses Java 8 on the same host. Or running multiple nginx containers that all have port 80 as their default listening ports \(if exposing on the host using the `--publish` flag, the ports selected for the host will need to be unique\). Isolation benefits are possible because of Linux Namespaces.
 
