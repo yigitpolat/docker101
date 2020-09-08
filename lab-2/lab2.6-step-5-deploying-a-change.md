@@ -27,7 +27,6 @@ First rebuild, this time use your Docker Hub username in the build command.:
 
 ```bash
 docker image build -t $DOCKER_USERNAME/python-hello-world .
-ibmcloud cr build -t $ICR_URL/$ICR_NS/python-hello-world:v2
 ```
 
 ```bash
