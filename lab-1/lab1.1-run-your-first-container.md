@@ -20,12 +20,12 @@ Completed Lab 0: You must have docker installed, or be using [http://play-with-d
 
 ## Run your first container
 
-We are going to use the Docker CLI to run our first container.
+We are going to use the play-with-docker to run our first container.
 
-1. Open a terminal on your local computer 
-2. Run `docker container run -t ubuntu top`
-
-   Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly.
+1. Navigate to [http://play-with-docker.com](http://play-with-docker.com). You are required to create a Docker ID to use the platform. This is a suggested action and you are going to use this account in the following labs.
+2. After logged in successfully, add a new instance from the left hand side. 
+2. Run `docker container run -i -t ubuntu top`
+   Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly. The `-i` or `--interactive` flag keep STDIN open even if not attached.
 
    ```bash
    docker container run -it ubuntu top
