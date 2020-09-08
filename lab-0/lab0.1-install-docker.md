@@ -10,8 +10,8 @@ None
 
 ## Install Docker
 
-1. Navigate to [http://store.docker.com](http://store.docker.com)
-2. Select "Community Edition" or "Docker CE"  Docker comes with two flavors of installations. The "paid" version is Docker Enterprise Edition \(Docker EE\), and the "free" version is Docker Community Edition \(Docker CE\). We will be using only free features provided by the Docker Community Edition for this course. 
+1. Navigate to [Official Web Site of Docker](https://www.docker.com/get-started)
+2. Download 'Docker Desktop for Mac' or 'Docker Desktop for Windows'. You can also view Linux Engine if you are a Linux user.
 3. Select the filters for your operating system or platform  On this page you will find the installation for your operating systems. For example, if you are using a Mac, select "MacOS", to find the installation for the Mac platform.
 
 ## **Optional:** Use play-with-docker
