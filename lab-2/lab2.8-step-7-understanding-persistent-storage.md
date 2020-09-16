@@ -42,6 +42,6 @@ Navigate to MySQL Docker Image on [DockerHub](https://hub.docker.com/_/mysql) an
  
  3. Create a new container specifying the mount point to store the MySQL database data.
   ```bash
-   docker container run -d --name persistent-mysql -v /root/mysql:/var/lib/mysql/data -e MYSQL_ROOT_PASSWORD=admin mysql
+   docker container run -d --name persistent-mysql -v /root/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_USER=user1 -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=items mysql
  ```
  
