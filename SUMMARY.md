@@ -23,7 +23,8 @@
 * [Step 4: Push to a central registry](lab-2/lab2.5-step-4-push-to-docker-hub.md)
 * [Step 5: Deploying a Change](lab-2/lab2.6-step-5-deploying-a-change.md)
 * [Step 6: Understanding Image Layers](lab-2/lab2.7-step-6-understanding-image-layers.md)
-* [Step 7: Clean up](lab-2/lab2.8-step-7-clean-up.md)
+* [Step 7: Understanding Persistent Storage](lab-2/lab2.8-step-7-understanding-persistent-storage.md)
+* [Step 8: Clean up](lab-2/lab2.8-step-7-clean-up.md)
 * [Summary](lab-2/lab2.9-summary.md)
 
 ## Lab 3
