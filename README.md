@@ -27,9 +27,9 @@ Clone the GitHub repository and follow labs 0-3 included in the tutorial: [https
 
 ## Outline
 
-* lab0 - [Install Docker](https://github.com/volaka/intro-to-docker-lab/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab0.md)
-* lab1 - [Run your first container](https://github.com/volaka/intro-to-docker-lab/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab1.md)
-* lab2 - [Add value with custom images](https://github.com/volaka/intro-to-docker-lab/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab2.md)
+* lab0 - [Install Docker](https://github.com/yigitpolat/docker101/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab0.md)
+* lab1 - [Run your first container](https://github.com/yigitpolat/docker101/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab1.md)
+* lab2 - [Add value with custom images](https://github.com/yigitpolat/docker101/tree/6812e5acd913afcf01957885b524dd13ec13ff50/lab2.md)
 * lab3 - [z/OS Container Extention]()
 
 ## Useful Links
